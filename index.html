@@ -619,7 +619,7 @@ function renderQuestion() {
   const multiHint = question.isMulti
     ? '<div class="feedback-box show wrong" style="background:#fff8e1;border-left:3px solid #f39c12;color:#8a6d1c;"><div class="feedback-title">📝 多选题</div>请选择所有正确答案后提交</div>'
     : '';
-  const submitBtn = question.isMulti
+  const submitBtnHtml = question.isMulti
     ? '<button class="next-btn show" id="submitBtn">提交答案</button>'
     : '';
 
@@ -629,7 +629,7 @@ function renderQuestion() {
         <div class="quiz-progress">第 <b>${currentIndex + 1}</b>/ ${currentQuiz.length} 题</div>
         <div class="quiz-score">
           正确 ${correctCount}
-          <span class="wrong-color">错误 ${currentIndex - (answered ? correctCount : correctCount)}</span>
+          <span class="wrong-color">错误 ${reviewData.length - correctCount}</span>
         </div>
       </div>
       <div class="question-text">${escapeHtml(question.stem)}</div>
@@ -639,7 +639,7 @@ function renderQuestion() {
       <div class="quiz-footer">
         <button class="footer-btn" id="backBtn">← 返回</button>
         <div>
-          ${submitBtn}
+          ${submitBtnHtml}
           <button class="next-btn" id="nextBtn">下一题 →</button>
         </div>
       </div>
